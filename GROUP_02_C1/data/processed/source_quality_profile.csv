@@ -1,0 +1,6 @@
+year,raw_selected_rows,unique_facilities,first_date,last_date,distinct_dates,missing_total,missing_age_cells,age_sum_mismatches,negative_numeric_cells,invalid_weeks,invalid_dates,dates_outside_source_year,duplicate_key_extras,duplicate_all_visit_count,duplicate_respiratory_count
+2020,389082,607,2020-01-01,2020-12-31,366,0,0,0,0,0,0,0,0,0,0
+2021,440812,635,2021-01-01,2021-12-31,365,0,0,0,0,0,0,0,0,0,0
+2022,446316,638,2022-01-01,2022-12-31,365,0,0,0,0,0,0,0,0,0,0
+2023,444954,642,2023-01-01,2023-12-31,365,0,0,0,0,0,0,0,2,13,0
+2024,448660,640,2024-01-01,2024-12-31,366,0,0,0,0,0,0,0,0,0,0

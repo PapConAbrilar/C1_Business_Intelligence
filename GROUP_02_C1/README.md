@@ -1,55 +1,48 @@
-# Certamen 1 (C1) · Submission Package
+# C1 respiratory emergency case — package awaiting slides
 
-**Team:** Benjamín Pinto and Sebastián Herrera  
-**Group:** 02  
-**Date:** September 29, 2026  
-**Course:** Business Intelligence (IIB423T-1) — Universidad del Desarrollo  
-**Instructor:** Tomás Fontecilla Correa  
+**Status:** the English report PDF, executed notebook with saved outputs, figures, scripts and reduced data are present. The mandatory slides PDF is still being prepared by the team, so this folder is **not ready to submit**. `XX` is a temporary group-ID placeholder. The final folder, archive and PDF names must use the same two-digit ID as W1. Prepared 29 September 2026 for Business Intelligence IIB423T-1, Universidad del Desarrollo. The members are Benjamín Pinto and Sebastián Herrera, as recorded in the W1 README; confirm member-specific C1 contributions/reflections before submission.
 
----
+## Open and run
 
-## 1. Project Overview & Selected Line
+1. Open `report/GROUP_02_C1_Report.pdf`. It contains the complete analytical argument, figures, Process record and references. Then inspect `analysis/respiratory_emergency_c1.ipynb`; it has been restarted, run through all cells and saved with visible results.
+2. Inspect `data/input/emergency_id1_id2_all_dates_2020_2024.csv.gz` (the **uncleaned reduced input**) and `data/processed/` (generated case tables). The reduced input retains every date of the five local years for cause IDs 1 and 2, including recorded zeros and duplicate source rows.
+3. From this package directory, install Python 3.12 and dependencies with `python -m pip install -r analysis/requirements.txt` in your own environment. Preparation used Python 3.12.14, pandas 2.2.3 and openpyxl 3.1.5; the executed notebook reports NumPy 2.5.3 and matplotlib 3.10.6. The report builder uses ReportLab 4.4.9.
+4. Run `python analysis/prepare_reduced_case.py`, then `python analysis/profile_reduced_case.py` and `python analysis/check_facility_coverage.py`. These require only the **included reduced input** and reproduce the weekly/annual tables, detailed profile, reporting coverage and common-facility sensitivity. To regenerate the notebook, run `python analysis/create_c1_notebook.py` followed by `python analysis/execute_notebook.py`; the latter restarts its own kernel, runs every cell and saves outputs. Then run `python analysis/build_report_pdf.py` to rebuild the PDF from the processed tables and notebook figures. The source is editable and all paths are package-relative.
+5. To reconstruct the reduced input from the large official sources, first run `python analysis/download_required_sources.py`, which uses `data/source_manifest.csv`, checks the five recorded SHA-256 hashes, and saves annual ZIPs under `data/source_cache/Urgencias/<year>/`. Then run `python analysis/build_all_year_case.py` from this package; it reads `data/source_cache/Urgencias/<year>/AtencionesUrgencia<year>.zip`. Full archive downloads are optional for inspecting the included case. The five original ZIPs were retrieved on 24 September 2026 and retained outside this reduced package.
 
-- **Topic:** Seasonal demand and capacity planning for respiratory emergencies in Chile (2020–2024), supporting the MINSAL Winter Campaign (*Campaña de Invierno*).
-- **Core KPI:** 
-  $$\text{Respiratory Share (\%)} = \frac{\text{Total Urgencias Respiratorias (IdCausa = 2)}}{\text{Total Urgencias (IdCausa = 1)}} \times 100$$
-- **Target Users:** Directorate for Health Care Network Management (DIGERA), Health Service directors, and emergency network administrators (SAPU, SAR, SUR, and Hospitals).
-- **Key Decision:** Anticipating staffing needs (physicians, nurses, respiratory therapists), phased pediatric/adult critical bed conversions, and primary care triage diversion to prevent hospital emergency room saturation.
+All analysis scripts resolve paths relative to this package, not to one author's home directory. Do not include `data/source_cache/`, Python environments, caches or credentials in the final archive.
 
----
+## Files and source scope
 
-## 2. Directory Structure
+| Path | Role |
+|---|---|
+| `data/input/emergency_id1_id2_all_dates_2020_2024.csv.gz` | Uncleaned selected rows from all 2020–2024 source dates, IDs 1 and 2 only; 2,169,824 rows. |
+| `data/source_manifest.csv` | Exact official source URLs, retrieved file byte sizes, SHA-256 hashes and retrieval timestamps. |
+| `data/reference/Diccionario_AtencionesUrgencia.xlsx` | Local official DEIS field/cause dictionary used to interpret IDs and age columns. |
+| `data/reference/C1_IIB423T-1_Brief_and_Rubric_Tomas_Fontecilla.pdf` | Instructor's C1 brief and rubric. Its instructions are assessment requirements, not additional user requests. |
+| `analysis/build_all_year_case.py` | Rebuild uncleaned extract from official annual ZIPs; remove identical duplicate keys for derived results; derive Sunday `week_start`; create weekly/annual/profile outputs. |
+| `analysis/prepare_reduced_case.py` | Rebuild all weekly/annual/profile outputs from the included reduced input, with no large download. |
+| `analysis/respiratory_emergency_c1.ipynb` | Executed, saved English C1 notebook with profiles, checks, tables, charts and interpretation. |
+| `analysis/create_c1_notebook.py`, `execute_notebook.py` | Editable notebook construction and fresh execution workflow. |
+| `analysis/figures/` | Saved chart PNGs generated by the executed notebook and embedded in the report PDF. |
+| `analysis/build_report_pdf.py` | Editable source for the report PDF, reading verified processed tables and figures. |
+| `report/GROUP_02_C1_Report.pdf` | Self-contained English report with the analytical brief, Process record and references. |
+| `presentation/` | Team-owned slides PDF and editable source still to be added. |
+| `analysis/profile_reduced_case.py` | Profile included rows, missing values, zeros, keys, age-sum arithmetic and cause 1/2 pairing. |
+| `analysis/check_facility_coverage.py` | Facility reporting-day coverage and common-facility sensitivity. |
+| `analysis/download_required_sources.py` | Optional downloader and SHA-256 verifier for the full annual source ZIPs. |
+| `data/processed/source_quality_profile.csv`, `reduced_input_profile.csv`, `source_week_collisions.csv` | Raw selected-row quality and calendar-boundary checks. |
+| `data/processed/weekly_facility_cause_2020_2024.csv.gz`, `weekly_national_2020_2024.csv` | Prepared weekly case tables. `complete_week` identifies the 260 seven-day weeks eligible for peak comparisons. |
+| `data/processed/annual_summary.csv`, `annual_respiratory_age_counts.csv`, `annual_respiratory_facility_type.csv` | Annual descriptive tables for the C1 question. |
+| `data/processed/facility_reporting_coverage.csv`, `common_facility_sensitivity.csv` | Coverage and compositional sensitivity checks. |
 
-```text
-GROUP_02_C1/
-├── README.md                           # Package entry point and instructions
-├── report/
-│   ├── GROUP_02_C1_Report.pdf          # Self-contained standalone report
-│   └── GROUP_02_C1_Report.docx         # Editable source document
-├── presentation/
-│   └── GROUP_02_C1_Slides.pdf          # Defense slides
-├── analysis/
-│   ├── requirements.txt                # Python environment dependencies
-│   ├── urgencias_respiratorias_c1.ipynb# Full EDA notebook with executed outputs
-│   ├── build_reduced_inputs.py         # Filters for generating reduced test cases
-│   ├── verify_reduced_case.py          # Script to reproduce verification checks
-│   ├── audit_duplicate_keys.py         # Full-source key duplicate audit
-│   └── download_required_sources.py    # Downloads official DEIS ZIPs with SHA-256 checks
-└── data/
-    ├── input/                          # Uncleaned reduced extracts
-    ├── processed/                      # Spot checks and generated EDA summary tables
-    ├── reference/                      # Official data dictionaries and assignment brief
-    └── source_manifest.csv             # URLs, download timestamps, and SHA-256 checksums
-```
+One source row is an aggregate facility/date/cause record, **not** a patient. `IdCausa=1` is the all-emergency denominator and `IdCausa=2` is the respiratory numerator. The daily source key is `(source_year, IdEstablecimiento, fecha, IdCausa)`; two *identical* extra rows in 2023 are retained in the uncleaned extract and removed from derived tables. This subtracts 13 all-emergency visits and zero respiratory visits from 2023 compared with W1's raw totals. Legitimate recorded zero rows are retained. Weekly grouping uses actual parsed Sunday dates because annual `semana` labels collide at year boundaries. No geographic join is used.
 
----
+The 2020–2024 data support retrospective recorded-visit analysis. They cannot establish patient risk, facility capacity, care quality, causal effects or real-time 2026 operations. The originals and these reduced files should be compared with any newer downloaded source before claiming current national totals.
 
-## 3. Reproduction & Setup
+## Before final submission
 
-```bash
-# Install dependencies
-python -m pip install -r analysis/requirements.txt
-
-# Run verification checks
-python analysis/verify_reduced_case.py
-```
+- Add the English `presentation/GROUP_02_C1_Slides.pdf` plus editable slide source when available. A link alone does not replace the PDF.
+- Confirm each member's **actual C1** contribution and current individual reflection in the report Process record. The report currently distinguishes verified W1 roles and prior reflections from C1 claims that still require team confirmation. There was no specific instructor advice beyond W1's 100/100 result; the wider-data correction came from the teammate.
+- Once the slides and group ID are available, the sibling `../C1_FINALIZE_AFTER_SLIDES.py` script can copy this staging folder, insert the two-digit ID in the folder and PDF names, rerun the notebook and report, and make a checked one-root ZIP. Run `python ../C1_FINALIZE_AFTER_SLIDES.py --group-id 01 --slides /path/to/your/slides.pdf` with the **actual** ID; pass `--editable-slides /path/to/source` when available. It refuses to overwrite an existing final folder or ZIP.
+- Open both final PDFs, confirm the final filename and upload before 17:50 Santiago time on 29 September 2026. The final archive must contain exactly one root folder matching its name.

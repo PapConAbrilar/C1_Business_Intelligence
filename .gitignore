@@ -24,3 +24,6 @@ env/
 # OS artifacts
 .DS_Store
 Thumbs.db
+
+# Temporary incoming folder
+Contrabando/
