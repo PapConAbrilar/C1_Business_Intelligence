@@ -1,5 +1,29 @@
-# Team slide handoff
+# Presentation Deck — Group 02
 
-Add `GROUP_02_C1_Slides.pdf` here, with editable source when available. Replace `XX` with the group's assigned two-digit ID in this folder's parent, the report filename, the slide filename and final archive name. The slide deck should reflect the completed report and leave time for individual questions within the 25-minute project slot.
+**Course:** Business Intelligence (IIB423T-1) — Universidad del Desarrollo  
+**Team:** Benjamín Pinto & Sebastián Herrera (Group 02)  
+**Topic:** Seasonal Demand, Capacity Planning & Exploratory Data Analysis of Respiratory Emergency Visits in Chile (2020–2024)  
 
-Suggested evidence order: problem and W1-to-C1 correction; proposed decision and measure; source row/denominator; preparation and Five Cs; annual and weekly results; age/care-setting mix; coverage sensitivity; what the data do and do not support; future ML/dashboard feasibility. Use the four figures in `../analysis/figures/` and the exact values in `../data/processed/`. Do not describe the internal teammate correction as instructor feedback. Each member should be prepared to explain the unit of observation, a method choice and a limitation independently.
+---
+
+## Included Files
+
+- `GROUP_02_C1_Slides.pdf`: 12-slide presentation in PDF format formatted for 16:9 widescreen display.
+- `GROUP_02_C1_Slides.pptx`: Fully editable source presentation created with `python-pptx`, compatible with Microsoft PowerPoint and Google Slides.
+
+---
+
+## Slide Structure (12–15 min presentation + Q&A)
+
+1. Title & Team (Benjamín Pinto & Sebastián Herrera)
+2. Operational Context & The Winter Campaign Decision (DIGERA / MINSAL)
+3. Selection from W1 and the C1 Reproducibility Correction (2.17M rows)
+4. Application of the Seven Steps (Class 03 Framework)
+5. Data Profiling & The Five Cs Quality Audit
+6. Full EDA: Histograms & Kernel Density Estimation (KDE) — Regime Shifts
+7. Full EDA: Seasonal Dynamics & Autumn Peaks (Mid-May Surge)
+8. Full EDA: Statistical Correlation — Pearson (Linear) vs. Spearman (Rank)
+9. Demand Breakdown: Care Settings (SAPU/SAR Shock Absorber) & Age Cohorts
+10. Sensitivity Check: Stable 581 Common-Facility Panel
+11. Project Continuity Beyond C1: Machine Learning & Dashboard Feasibility
+12. Defense Anchors & Member Roles (Individual Q&A Preparation)
