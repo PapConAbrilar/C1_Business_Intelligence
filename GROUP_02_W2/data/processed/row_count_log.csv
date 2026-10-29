@@ -1,0 +1,13 @@
+step,rows,note
+0 raw C1 reduced input,2169824,"cause IDs 1 and 2, all dates 2020-2024, uncleaned"
+1 after V2 ID strip,2169824,value correction only
+2 after V3 de-duplication,2169822,two identical 2023 rows removed
+3 facility-date table (wide),1084911,one row per facility-date; both causes as columns
+4 national weekly table,262,262 Sunday-Saturday weeks
+5 complete national weeks,260,two partial boundary weeks excluded from weekly comparisons
+6 stratified 25% sample,271227,seed 2026; strata = year x type
+7 facility-week grid,174980,673 facilities x 260 complete weeks
+8 modelling table,149997,facility known at t; target week fully reported
+9a train,87937,targets in 2020-2022
+9b validation,30939,targets in 2023
+9c test,31121,targets in 2024 (previously explored in W1/C1)

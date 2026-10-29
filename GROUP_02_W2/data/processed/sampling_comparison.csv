@@ -1,0 +1,7 @@
+,full_analytical_dataset,stratified_25pct_sample,difference
+facility_dates,1084911.0,271227.0,-813684.0
+KPI respiratory share (%),22.214,22.258,0.044
+KPI 2024 respiratory share (%),28.512,28.574,0.061
+Segment: primary care % of respiratory visits,73.864,73.702,-0.162
+Segment: under-15 % of respiratory visits,44.326,44.387,0.062
+Segment: SUR % of facility-dates,18.478,18.479,0.0

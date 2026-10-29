@@ -1,0 +1,4 @@
+pair,weeks,pearson_levels,spearman_levels,pearson_weekly_log_change,spearman_weekly_log_change
+hospital vs primary_care,260,0.983,0.984,0.931,0.884
+under_1 vs age_65_plus,260,0.775,0.834,0.543,0.516
+resp_visits vs all_visits,260,0.881,0.932,0.777,0.787

@@ -27,3 +27,9 @@ Thumbs.db
 
 # Temporary incoming folder
 Contrabando/
+
+# Private personal notes & scripts (not for github)
+C1_*.txt
+!requirements.txt
+!**/requirements.txt
+

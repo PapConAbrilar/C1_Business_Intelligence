@@ -1,0 +1,6 @@
+rule / period,threshold_pct,weeks,alert_weeks,alert_pct_of_weeks,first_alert_week,peak_share_week,peak_flagged,stage
+A: 75th pct of all training weeks (2020-2022),21.58,52,42,80.8,2023-03-12,2023-05-21,True,validation comparison
+B: 75th pct of post-pandemic training weeks (2022),29.72,52,27,51.9,2023-03-12,2023-05-21,True,validation comparison
+development weeks used to fit,31.53,105,27,25.7,2022-05-29,2023-05-21,True,final
+test 2024 - applied once,31.53,52,14,26.9,2024-04-21,2024-05-12,True,final
+"test 2024 - W1's unvalidated 30% line, for comparison",30.0,52,23,44.2,2024-03-17,2024-05-12,True,final

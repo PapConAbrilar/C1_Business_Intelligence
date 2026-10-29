@@ -1,0 +1,3 @@
+fold,fit_target_years,assess_target_year,fit_rows,assess_rows,fit_last_target,assess_first_target,overlap_rows
+fold 1,2020-2021,2022,56241,31696,2021-12-19,2021-12-26,0
+fold 2,2020-2022,2023,87937,30939,2022-12-25,2023-01-01,0

@@ -1,0 +1,11 @@
+# Versions used for the saved W2 execution (Python 3.13.17)
+pandas==3.1.0
+numpy==2.5.4
+matplotlib==3.11.2
+scikit-learn==1.9.1
+openpyxl==3.1.5
+ipykernel==7.4.0
+nbformat==5.11.1
+nbclient==0.11.0
+# Optional, to open the notebook interactively
+notebook>=7,<8
